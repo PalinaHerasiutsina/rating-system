@@ -1,0 +1,86 @@
+.wrapper {
+    display: flex;
+    flex-direction: column; 
+    user-select: none;
+}
+
+.container {
+    width: 380px;
+    height: 50px;
+    border: 0.5px solid #D7D7D7;
+    border-collapse: collapse;
+    border-radius: 5px; 
+    font: 15px 'Orbitron', sans-serif;
+    margin: 4px 0px -2px 0px;
+    padding: 2px;
+    padding-left: 8px;
+    display: flex;
+}
+
+.add {
+    display: flex;
+    width: 380px;
+    height: 50px;
+}
+
+.inputText {
+    width: 240px;
+    height: 40px;
+    border: 0.5px solid #D7D7D7; 
+    border-radius: 5px; 
+    display: flex;
+    flex: 2;
+    margin: 4px 0px -2px 0px;
+}
+
+.inputSubmit {
+    width: 20px;
+    height: 40px;
+    background-color: #D7D7D7;
+    color: black;
+    justify-content: center;
+    border: none;
+    border-radius: 5px; 
+    margin: 4px 5px 0px 8px;
+    display: flex;
+    flex: 1;
+    cursor: pointer;
+    outline: none;
+}
+.film {
+    display: flex;
+    flex: 2;
+    overflow: hidden; 
+}
+
+p {
+    overflow: hidden;
+    text-overflow: ellipsis; 
+    white-space: nowrap;
+}
+
+.stars {
+    display: flex;
+    flex: 1;
+    text-align: right;
+    margin: 12px;
+}
+
+.star{
+  color: goldenrod;
+}
+
+.star::before{
+  content: '\2606';
+  cursor: pointer;
+}
+
+.star:hover::before{
+  content: '\2605';
+  color: goldenrod;
+}
+
+.star.rated::before{
+  content: '\2605';
+
+}

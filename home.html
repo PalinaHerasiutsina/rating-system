@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Rating System</title>
+	<meta name="description" content="">
+	<meta name="author" content="Palina Herasiutsina">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="rating-system.css">
+</head>
+<body>
+	<div class="add">
+		<input type="text" name="input" class="inputText" id="inputFilmTitle" >
+		<button
+		type="submit" value="ADD" onclick="input()" class="inputSubmit" id="inputSubmit">
+		ADD
+	</button>
+    </div>
+    <div class="wrapper" id="wrapper">
+	  <div class="container" "id=container">
+		<div class="film" >
+			<p></p>
+		</div>
+		<div class="stars" data-rating="0">
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+			<span class="star">&nbsp;</span>
+		</div>
+	</div>
+
+</div>
+<script src="rating-system.js"></script>
+</body>
+</html>
