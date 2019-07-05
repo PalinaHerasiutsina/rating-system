@@ -1,6 +1,9 @@
 //initial setup
 document.addEventListener('DOMContentLoaded', function(){
-  setUp()  
+  if (!getArray()){
+    saveArray(films)
+  }
+  setUp()
 });
 
 var films = [
@@ -30,26 +33,37 @@ var films = [
 }
 ]
 
+function saveArray(filmsArray){
+  localStorage.setItem('data', JSON.stringify(filmsArray));
+}
+
+function getArray(){
+  return JSON.parse(localStorage.getItem('data'));;
+}
+
 function input(){
   var input = document.getElementById('inputFilmTitle');
   var value = input.value;
-  films.push ({
-    id: films.length +1,
+  var getArr = getArray();
+  getArr.push ({
+    id: getArr.length +1,
     title: value,
     rating: 0
   })
-  setUp()
+  saveArray(getArr);
+  setUp();
 }
 
 function setUp(){
-  sort ();
+  sort();
   clone();
   insert();
   addlistener();
 }
 
 function sort (){
-  films.sort(function(a,b){
+  sortedArray = getArray()
+  sortedArray.sort(function(a,b){
     if (a.rating > b.rating){
       return -1
     } else if (a.rating < b.rating) {
@@ -61,22 +75,22 @@ function sort (){
     } 
     return 0
   })
+  saveArray(sortedArray)
 }
 
 function clone(){
   var containers = document.getElementsByClassName('container');
   var object = containers[0];
-  for (var i = containers.length; i<films.length; i++){
+  for (var i = containers.length; i<getArray().length; i++){
     document.getElementById('wrapper').appendChild(object.cloneNode(true));
   }
 }  
 
-function insert(){
+function insert() {
   var containers = document.getElementsByClassName('container');
-  films.forEach(function(film, index){
+  getArray().forEach(function(film, index){
     var divContainer = containers[index];
     var divsfilm = divContainer.getElementsByClassName('film');
-
     divsfilm[0].children[0].innerHTML = film.title;
 
     var starsContainer = divContainer.lastElementChild;
@@ -102,14 +116,15 @@ function addlistener(){
       star.addEventListener('click', (function(event){
        var filmId = this.parentNode.getAttribute('filmId');
 
-       var filterFilm = films.filter(function(film) {
+       var filmsUpdate = getArray();
+       var filterFilm = filmsUpdate.filter(function(film) {
          return film.id== filmId;
        });
        filterFilm[0].rating = index +1;
-       sort ();
+       saveArray(filmsUpdate);
+       sort();
        insert();
      }))
     })
-
   });
 };

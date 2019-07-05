@@ -75,11 +75,6 @@ p {
   cursor: pointer;
 }
 
-.star:hover::before{
-  content: '\2605';
-  color: goldenrod;
-}
-
 .star.rated::before{
   content: '\2605';
 
